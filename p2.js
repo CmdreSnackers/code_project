@@ -43,6 +43,21 @@ function maxDistance(nums1, nums2) {
   return maxDist;
 }
 
+/*
+We start by initializing two pointers, i and j, 
+to the beginning of nums1 and nums2, respectively, 
+and setting maxDist to 0. 
+We then loop through the arrays as long as i and j are within their respective array bounds.
+
+If nums1[i] is greater than nums2[j], 
+we increment i to try to find a smaller nums1[i] that is less than or equal to nums2[j]. 
+If nums1[i] is less than or equal to nums2[j], we update maxDist to the maximum distance between the current pair, j - i, 
+and increment j to try to find a larger nums2[j] that satisfies the condition.
+
+Finally, we return maxDist, 
+which represents the maximum distance between any pair of elements that satisfy the condition.
+*/
+
 //binary search
 //O(n log m)
 function maxDistance2(nums1, nums2) {
@@ -64,3 +79,18 @@ function maxDistance2(nums1, nums2) {
   }
   return maxDist;
 }
+
+/*
+Initialize two pointers, lo and hi, to the start and end of nums2, respectively.
+
+While lo <= hi, compute the midpoint mid as (lo + hi) / 2 rounded down to an integer.
+
+If nums2[mid] >= nums1[i], the desired index j must be to the right of mid, so set lo = mid + 1.
+
+Otherwise, nums2[mid] < nums1[i], so the desired index j must be to the left of mid, so set hi = mid - 1.
+
+After the loop, the value of lo is one past the largest index j such that nums2[j] >= nums1[i], so if lo > i, 
+we can compute the distance between i and lo - 1 (excluding the elements themselves) and 
+update the maximum distance accordingly.
+
+*/
